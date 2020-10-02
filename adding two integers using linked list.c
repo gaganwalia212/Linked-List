@@ -21,6 +21,8 @@ void display(nodeptr p)
             int x=p->data;
             int i=1;
             int a=10;
+            //calculating number of digits
+            //if digit is 555..then 00555 has to be displayed
             while(x/a)
             {
                 x;
@@ -28,6 +30,7 @@ void display(nodeptr p)
                 a*=10;
             }
             int k=5-i;
+            //for fisrst difit we need not display extra zeroes
             for(i=0;i<k&&p!=q;i++)
                 printf("0");
             printf("%d",p->data);
@@ -36,7 +39,7 @@ void display(nodeptr p)
         printf("\n");
     }
 }
-
+//insert node at the end..if list is empty or non empty
 void insert_end(nodeptr* list,int data)
 {
     nodeptr p=(nodeptr)malloc(sizeof(struct Node));
@@ -55,6 +58,7 @@ void insert_end(nodeptr* list,int data)
 
 }
 
+//reverses the list
 void reverse(nodeptr * list)
 {
     nodeptr p=*list,q=0,r=0;
@@ -68,6 +72,7 @@ void reverse(nodeptr * list)
     *list=r;
 }
 
+//converts a string literal into its numeric value
 int value(char *s ,int i,int j)
 {
     int val=0;
@@ -79,6 +84,7 @@ int value(char *s ,int i,int j)
     return val;
 }
 
+//returns size of string literal
 int size(char *s)
 {
     int n=0,i=0;
@@ -88,6 +94,8 @@ int size(char *s)
     return n;
 }
 
+//stores string in a linked list
+//chunks of 5 digits are stored
 void convert(nodeptr* list,char * s,int n)
 {
     int i=n-1;
